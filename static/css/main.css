@@ -1,0 +1,348 @@
+html,body{
+  min-height:100%;
+  color:#888;
+  background-color:#343;
+  background-image:-webkit-gradient(radial, 50% 0%, 0, 50% 0%, 900, from(#544832), to(#222));
+  background-image:-moz-radial-gradient(center, #544832, #222);
+  bakground-repeat:no-repeat;
+  background-position:middle left;
+  font-size:12px;
+  line-height:20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: 'Open Sans Condensed', Helvetica, sans-serif;
+}
+a {
+  text-decoration: none;
+  font-family: 'Marvel', sans-serif;
+}
+
+section {
+  display: none;
+  position: relative;
+  width: 900px;
+  height: 600px;
+  margin: 40px auto;
+  margin-top: 50px;
+  background-color: rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,0,0,0.4);
+  border-radius: 10px;
+  box-shadow: -6px 6px 12px rgba(40,30,0,0.5), 6px 6px 12px rgba(40,30,0,0.5);
+  overflow: hidden;
+}
+
+article {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  height: 496px;
+  width: 819px;
+  padding: 20px 40px;
+  border: 0px solid rgba(0,0,0,0.3);
+  border-width: 2px 0;
+  background-color: rgba(100,90,70,0.6);
+  text-align: center;
+  overflow: hidden;
+}
+
+h4, h5, h6 {
+  line-height: 1em;
+}
+h4, h5 {
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+  text-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+
+ul{
+  font-size: 40px;
+  line-height: 50px;
+  text-align: left;
+  margin: 30px 0 0 30px;
+}
+li{
+  -webkit-transition: opacity 0.2s ease-in;
+}
+li.hidden {
+  opacity: 0;
+}
+
+article.prev {
+  left: -100%;
+}
+
+article.next {
+  left: 100%;
+}
+
+article{
+  -webkit-transition: all 0.3s ease-out;
+}
+
+code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+  display: block;
+}
+
+
+
+
+
+#intro{
+  background-color: rgba(50,50,42,0.8);
+}
+#intro h4, #intro h5{
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  font-weight: normal;
+  color: #eee;
+  overflow: hidden;
+}
+#intro h4{
+  -webkit-transform: rotate(-30deg) translateY(95px);
+  background-color: #f271a7;
+  padding-left: 30px;
+  font-size: 80px;
+  height: 80px;
+  text-align: left;
+}
+#intro h5{
+  -webkit-transform: rotate(-30deg) translateY(110px) translateX(-140px);
+  background-color: #6db2dc;
+  padding-right: 30px;
+  font-size: 40px;
+  height: 40px;
+  text-align: right;
+}
+#intro span{
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(250,220,60,0.5);
+}
+#intro h6 {
+  -webkit-transform: rotate(-30deg) translateY(30px) translateX(300px);
+  font-size: 50px;
+  color: #000;
+  text-shadow: 0 0 2px rgba(160,160,100,0.7);
+}
+
+
+
+
+
+#history{
+  background-color: rgba(40,20,50,0.6);
+}
+
+#history h4{
+  color: #eee;
+  font-size: 60px;
+}
+
+#history li{
+  color: #bbb;
+  line-height: 1.8em;
+}
+
+
+
+#code{
+  background-color: rgba(255,255,255,0.7);
+}
+#code h4{
+  color: #444;
+  font-size: 50px;
+}
+#code code{
+  border: 1px dashed #888;
+  background-color: #DDD;
+  color: #666;
+  font-size: 20px;
+  line-height: 1.4em;
+}
+
+
+#websocket{
+  background-color: rgba(40,50,20,0.5);
+}
+
+#websocket h4{
+  color: #def;
+  font-size: 50px;
+}
+
+#websocket li {
+  color: #dc9;
+  line-height: 1.8em;
+}
+
+
+
+#problems{
+  background-color: rgba(80,60,0,0.4);
+}
+#problems h4{
+  color: #ec8;
+  font-size: 36px;
+}
+#problems li{
+  color: #efe;
+  line-height: 1.4em;
+  padding-bottom: 20px;
+}
+
+
+#sucks{
+  background-color: rgba(40,60,100,0.5);
+}
+#sucks h4{
+  color: #C33;
+  font-size: 36px;
+}
+#sucks li{
+  color: #999;
+  line-height: 1.1em;
+  padding-bottom: 25px;
+}
+
+
+
+#solution h4 {
+  color: #FFE;
+  font-size: 44px;
+}
+#solution li{
+  color: #BBB;
+  line-height: 1.2em;
+  padding-bottom: 20px;
+}
+
+
+#forever {
+  background-color: #222;
+}
+#forever h4{
+  color: #A40;
+  font-size: 52px;
+}
+#forever ul {
+  font-size:80px;
+  color:#F80;
+  list-style: none;
+  text-align:center;
+  margin: 160px 0 0 0;
+}
+
+#api{
+  background-color: rgba(90,60,10,0.5);
+}
+#api h4{
+  font-size: 52px;
+  color: #8DC;
+}
+#api li{
+  color: #EF9;
+  line-height: 1.2em;
+  padding-bottom: 40px;
+}
+
+
+#socketio{
+  background-color: #1d6d8e;
+}
+#socketio h4{
+  color: #fff;
+  font-size: 50px;
+}
+#socketio li{
+  color: #ffd;
+  padding-bottom: 10px;
+}
+
+
+#server{
+  background-color: rgba(100,255,180,0.3);
+}
+#client{
+  background-color: rgba(200,255,120,0.3);
+}
+#server h4, #client h4{
+  color: #622;
+  font-size: 50px;
+  text-shadow: none;
+}
+#server code, #client code{
+  font-size: 20px;
+  line-height: 1.6em;
+  color: #000;
+}
+
+#demo h4, #qna h4{
+  font-size: 80px;
+  margin-top: 160px;
+  text-shadow: none;
+  color: #FAA;
+}
+
+#about{
+  background-color: #fff;
+}
+
+
+
+header, footer{
+  position: absolute;
+  left: 15px;
+  right: 15px;
+}
+header {
+  top: 6px;
+}
+
+footer{
+  bottom: 4px;
+}
+
+#jsfoo{
+  float: right;
+}
+#me {
+  float: left;
+}
+#jsfoo a, #me a{
+  letter-spacing: 1.5;
+  font-size: 14px;
+  color: #fff;
+  opacity: 0.4;
+  text-shadow: 0 0 4px #000;
+  -webkit-transition: opacity 0.2s ease-in-out;
+}
+#jsfoo a{
+  opacity: 0.8;
+  text-shadow: 0 0 2px #666;
+}
+#me a:after {
+  content: "\2022";
+  padding: 10px;
+  color: #000;
+  font-weight: bold;
+  text-shadow: 0 0 6px #ccc;
+  font-size: 12px;
+}
+#me a:last-of-type:after {
+  content: '';
+}
+#jsfoo a:hover, #me a:hover{
+  opacity: 1;
+  text-shadow: 0 0 10px #000;
+}
+
+#pages{
+  float: right;
+  font-weight: bold;
+  color: #CCC;
+  font-family: georgia;
+  text-shadow: 0 0 2px black;
+}

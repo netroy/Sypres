@@ -1,0 +1,177 @@
+<section class="animated">
+  <header>
+    <div id="jsfoo">
+      <a href="//jsfoo.hasgeek.com" target="_blank">jsFoo India 2011</a>
+    </div>
+  </header>
+
+
+  <article id="intro">
+    <h4>Realtime Web</h4>
+    <h5>Embracing the <span>awesomeness</span> from the future</h5>
+    <h6>NetRoY</h6>
+  </article>
+
+
+  <article id="history">
+    <h4>History of the Web</h4>
+    <ul>
+      <li>Static Documents</li>
+      <li>Dynamic Server Side Pages ( CGI anyone ? )</li>
+      <li>JavaScript ( ECMAScript )</li>
+      <li>XHR aka AJAX</li>
+      <li>WebSockets</li>
+    </ul>
+  </article>
+
+
+  <article id="websocket">
+    <h4>So what is this WebSocket thing ???</h4>
+    <ul>
+      <li>Bi-directional &amp; full-duplex communications TCP channels</li>
+      <li>Can be used for Multiplayer Games</li>
+      <li>Can be used Live &amp; instant Updates</li>
+      <li>They are available in most modern browsers</li>
+      <li>They are pretty awesome</li>
+    </ul>
+  </article>
+  
+  <article id="code">
+    <h4>What does code look like ?</h4>
+    <code>
+    var ws = new WebSocket("http://MySuperAwesomeServer.com/");
+
+    ws.onopen = function(){
+      console.log("Gotcha");
+    };
+
+    ws.onclose = function(){
+      console.log("See Ya");
+    };
+
+    ws.onmessage = function(){
+      console.log("Hey Daug, Whatcha Doing???");
+    };
+    </code>
+  </article>
+
+
+  <article id="problems">
+    <h4>If they are so &quot;Awesome&quot;, Why aren't we using them ?</h4>
+    <ul>
+      <li>Browser Support ( Firefox 4+, Chrome, Safari 5+, IE10, Opera 11+)</li>
+      <li>Multiple Drafts ( 6th draft currently )</li>
+      <li>Vendor prefixes ( manageable )</li>
+      <li>Security loop-holes with earlier drafts</li>
+      <li>All in all, they should be ready in a year or two</li>
+    </ul>
+  </article>
+
+
+  <article id="sucks">
+    <h4>Why even talk about something that's unusable today ???</h4>
+    <ul>
+      <li>There are tested &amp; proven alternates available</li>
+      <li>Comet, Bayeux protocol, BOSH protocol, APE, etc...</li>
+      <li>Using Fallbacks like XHR, Iframes &amp; SWF</li>
+      <li>We've been using these in tools like GMail, Meebo &amp; in tickers on many finance sites </li>
+      <li>We've been just fine without Painful WebSockets for so long</li>
+    </ul>
+  </article>
+
+
+  <article id="solution">
+    <h4>We actually &quot;DO&quot; need WebSockets</h4>
+    <ul>
+      <li>These Solutions are great, but they are Hacks essentially</li>
+      <li>Each of these has its own benefits (&amp; Issues)</li>
+      <li>Few of these solutions aren't highly scalable</li>
+      <li>Its about time to standardize what we've re-invented for so long</li>
+      <li>Standardizing &amp; putting them in every browser saves money &amp; time in long run</li>
+    </ul>
+  </article>
+
+
+  <article id="forever">
+    <h4>But it will take forever to standardize</h4>
+    <ul>
+      <li>So True !!!</li>
+    </ul>
+  </article>
+
+
+  <article id="api">
+    <h4>Eureka !... How About a wrapper API</h4>
+    <ul>
+      <li>How about a simple JavaScript API that abstract out all these mechanisms?</li>
+      <li>Uses WebSockets if available ?</li>
+      <li>Falls back to the next best transport?</li>
+      <li>Scales well on the server side</li>
+    </ul>
+  </article>
+
+
+  <article id="socketio">
+    <h4>Socket.IO &amp; Node.JS</h4>
+    <ul>
+      <li>Exactly what we need today</li>
+      <li>5 tested &amp; trusted fallbacks for Websockets, Works on even IE 5.5</li>
+      <li>A simple API, consistent across server &amp; client</li>
+      <li>Node.JS based server scales very well, Servers also available for Erlang, Python &amp; Java</li>
+      <li>Highly Extensible, Free &amp; Open Source</li>
+    </ul>
+  </article>
+
+
+  <article id="server">
+    <h4>Server Side Code</h4>
+    <code>
+    var io = require('socket.io').listen(80);
+
+    io.sockets.on('connection', function (socket) {
+      socket.emit('news', { hello: 'world' });
+      socket.on('my other event', function (data) {
+        console.log(data);
+      });
+    });
+    </code>
+  </article>
+
+  <article id="client">
+    <h4>Client Side Code</h4>
+    <code>
+    &lt;script src="/socket.io/socket.io.js"&gt;&lt;/script&gt;
+    &lt;script>
+      var socket = io.connect('http://localhost');
+      socket.on('news', function (data) {
+        console.log(data);
+        socket.emit('my other event', { my: 'data' });
+      });
+    &lt;/script&gt;
+    </code>
+  </article>
+
+  <article id="demo">
+    <h4>Quick Demo</h4>
+  </article>
+
+  <article id="qna">
+    <h4>Q &amp; A</h4>
+  </article>
+
+  <article id="about">
+    <h2>Aditya Y</h2>
+    <h6>(Frontend Developer &amp; a JavaScripter)</h6>
+    <p>NetRoY on <a href="//twitter.com/netroy" target="_blank">Twitter</a> &amp; 
+    <a href="//github.com/netroy" target="_blank">Github</a></p>
+    <p>PS: I'm the one who wrote the jsFoo website, and it uses Socket.IO</p>
+  </article>
+<footer>  
+  <div id="me">
+    <a href="//netroy.in/" target="_blank">NetRoY.in</a>
+    <a href="//twitter.com/netroy" target="_blank">Twitter</a>
+    <a href="//github.com/netroy" target="_blank">Github</a>
+  </div>
+  <div id="pages"></div>
+</footer>
+</section>
