@@ -28,7 +28,12 @@ if (!module.parent) {
 }
 
 var io = io.listen(app);
-io.set('log level', 1);
+io.configure(function(){
+  io.set('log level', 1);
+  io.enable('browser client minification');
+  io.enable('browser client etag');
+  io.set('transports', ['websocket', 'xhr-polling', 'jsonp-polling', 'htmlfile', 'flashsocket']);
+});
 io.sockets.on('connection', function(client){
   // do something
 });

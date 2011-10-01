@@ -3,11 +3,12 @@ var init = (function(window, document, $){
   
     // handle keys
     var keyEventMap = {
-      38: "previousSlide",
+      38: "prevSlide",
       40: "nextSlide",
-      37: "previous",
+      37: "prev",
       39: "next"
     }, 
+    log = console?console.log.bind(console):function(){},
     slides = $("article"), 
     pages = $("#pages"),
     index = 0, 
@@ -32,7 +33,7 @@ var init = (function(window, document, $){
     }
 
     var actions = {
-      previous: function(){
+      prev: function(){
         updateSlide(index-1);
       },
       next: function(){
@@ -43,7 +44,7 @@ var init = (function(window, document, $){
           updateSlide(index+1);
         }
       },
-      previousSlide: function(){
+      prevSlide: function(){
 
       },
       nextSlide: function(){
@@ -83,10 +84,11 @@ var init = (function(window, document, $){
 
 
 /*
+
     (function(callback) {
       var keys = "38,38,40,40,37,39,37,39,66,65";
       var strokes = [];
-      $(window).keypress(function(e){
+      $(document).bind("keypress", function(e){
         strokes.push(e.keyCode);
         if (strokes.join().indexOf(keys) >= 0){
           $(document).unbind('keydown', arguments.callee);
@@ -100,9 +102,16 @@ var init = (function(window, document, $){
       }
     });
 */
-
-
-
+    var socket  = io.connect();
+    socket.on('connect', function() {
+      log('Connected');
+    });
+    socket.on("next", function(){
+      $(document).trigger("next");
+    });
+    socket.on("prev", function(){
+      $(document).trigger("prev");
+    });
   }
   $(init);
 })(window, document, jQuery);

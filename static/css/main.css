@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/Open Sans Condensed.woff') format('woff');
+}
+@font-face {
+  font-family: 'Marvel';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/Marvel.woff') format('woff');
+}
+
+
 html,body{
   min-height:100%;
   color:#888;
@@ -10,7 +24,7 @@ html,body{
   line-height:20px;
   overflow-y: auto;
   overflow-x: hidden;
-  font-family: 'Open Sans Condensed', Helvetica, sans-serif;
+  font-family: 'Open Sans Condensed', 'Ubuntu Condensed', Helvetica, sans-serif;
 }
 a {
   text-decoration: none;
@@ -36,10 +50,10 @@ article {
   top: 30px;
   left: 0;
   height: 496px;
-  width: 819px;
-  padding: 20px 40px;
+  width: 859px;
+  padding: 20px;
   border: 0px solid rgba(0,0,0,0.3);
-  border-width: 2px 0;
+  border-width: 1px 0;
   background-color: rgba(100,90,70,0.6);
   text-align: center;
   overflow: hidden;
@@ -62,6 +76,7 @@ ul{
 }
 li{
   -webkit-transition: opacity 0.2s ease-in;
+  -moz-transition: opacity 0.2s ease-in;
 }
 li.hidden {
   opacity: 0;
@@ -77,6 +92,7 @@ article.next {
 
 article{
   -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
 }
 
 code {
@@ -100,9 +116,11 @@ code {
   font-weight: normal;
   color: #eee;
   overflow: hidden;
+  width: 900px;
 }
 #intro h4{
   -webkit-transform: rotate(-30deg) translateY(95px);
+  -moz-transform: rotate(-30deg) translateY(95px);
   background-color: #f271a7;
   padding-left: 30px;
   font-size: 80px;
@@ -111,6 +129,7 @@ code {
 }
 #intro h5{
   -webkit-transform: rotate(-30deg) translateY(110px) translateX(-140px);
+  -moz-transform: rotate(-30deg) translateY(110px) translateX(-140px);
   background-color: #6db2dc;
   padding-right: 30px;
   font-size: 40px;
@@ -122,7 +141,8 @@ code {
   text-shadow: 0 1px 10px rgba(250,220,60,0.5);
 }
 #intro h6 {
-  -webkit-transform: rotate(-30deg) translateY(30px) translateX(300px);
+  -webkit-transform: rotate(-30deg) translateY(50px) translateX(380px);
+  -moz-transform: rotate(-30deg) translateY(50px) translateX(380px);
   font-size: 50px;
   color: #000;
   text-shadow: 0 0 2px rgba(160,160,100,0.7);
