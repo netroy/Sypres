@@ -1,4 +1,4 @@
-var init = (function(window, document, $){
+(function(window, document, $){
   function init(){
   
     // handle keys
@@ -8,13 +8,11 @@ var init = (function(window, document, $){
       37: "prev",
       39: "next"
     }, 
-    log = console?console.log.bind(console):function(){},
     slides = $("article"), 
     pages = $("#pages"),
     index = 0, 
     last = slides.length - 1,
-    historyAPISupported = !!("history" in window && history.pushState),
-    isAdmin = true;
+    historyAPISupported = !!("history" in window && history.pushState);
 
     function updateSlide(i, skipHistory){
       if(typeof i !== 'number' || i < 0 || i > last){
@@ -34,9 +32,15 @@ var init = (function(window, document, $){
 
     var actions = {
       prev: function(){
+        if(isAdmin){
+          $.get("/prev");
+        }
         updateSlide(index-1);
       },
       next: function(){
+        if (isAdmin){
+          $.get("/next");
+        }
         var li = $(slides[index]).find("li.hidden");
         if(li.length > 0){
           li.first().removeClass("hidden");
@@ -104,14 +108,19 @@ var init = (function(window, document, $){
 */
     var socket  = io.connect();
     socket.on('connect', function() {
-      log('Connected');
+      //console.log('Connected');
     });
     socket.on("next", function(){
-      $(document).trigger("next");
+      if(!isAdmin){
+        $(document).trigger("next");
+      }
     });
     socket.on("prev", function(){
-      $(document).trigger("prev");
+      if(!isAdmin){
+        $(document).trigger("prev");
+      }
     });
   }
   $(init);
 })(window, document, jQuery);
+isAdmin = false;

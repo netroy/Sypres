@@ -1,6 +1,7 @@
 var express = require('express'),
          io = require('socket.io'),
-        app = express.createServer();
+        app = express.createServer(),
+         io = io.listen(app);
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
@@ -22,18 +23,31 @@ app.get("/[1-9]?([0-9])?/?", function(req, resp){
   });
 });
 
+app.get("/next", function(req, resp){
+  io.sockets.emit("next");
+  resp.end();
+});
+
+app.get("/prev", function(req, resp){
+  io.sockets.emit("prev");
+  resp.end();
+});
+
 if (!module.parent) {
   app.listen(process.env.app_port || 10875);
   console.info("Started on port %d", app.address().port);
 }
 
-var io = io.listen(app);
 io.configure(function(){
   io.set('log level', 1);
   io.enable('browser client minification');
   io.enable('browser client etag');
   io.set('transports', ['websocket', 'xhr-polling', 'jsonp-polling', 'htmlfile', 'flashsocket']);
 });
+
 io.sockets.on('connection', function(client){
   // do something
+  client.on("disconnect", function(){
+    
+  })
 });
