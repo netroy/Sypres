@@ -1,0 +1,13 @@
+{
+  "name": "SyPres",
+  "description": "Synchronized presentations with WebSockets",
+  "author": "Aditya <aditya@netroy.in>",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": ">= 2.4.6",
+    "ejs": ">= 0.4.3",
+    "socket.io": ">= 0.8.4"
+  },
+  "bugs": "https://github.com/netroy/Sypres/issues",
+  "engine": ">=0.4.7"
+}
