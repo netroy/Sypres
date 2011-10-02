@@ -12,8 +12,9 @@ PS: The intro slide style was shamelessly copied from <http://speakerdeck.com/u/
 
 
 ToDo:
-*  fix the UI for mobile & tablets ... with touch/swipe support
-*  pdf export to upload to third party sites
-*  hook up the irc code for Q/A (or add a box on the UI for that, for people who authenticate)
-*  Fix internet situations at indian community conferences so that this tool becomes of some use to myself (not related to the project, but undoubtably important)
-*  add controls to navigate & fullscreen the presentation
+
+* fix the UI for mobile & tablets ... with touch/swipe support
+* pdf export to upload to third party sites
+* hook up the irc code for Q/A (or add a box on the UI for that, for people who authenticate)
+* Fix internet situations at indian community conferences so that this tool becomes of some use to myself (not related to the project, but undoubtably important)
+* add controls to navigate & fullscreen the presentation
