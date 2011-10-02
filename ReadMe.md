@@ -16,3 +16,4 @@ ToDo:
 * pdf export to upload to third party sites
 * hook up the irc code for Q/A (or add a box on the UI for that, for people who authenticate)
 * Fix internet situations at indian community conferences so that this tool becomes of some use to myself (not related to the project, but undoubtably important)
+* add controls to navigate & fullscreen the presentation
