@@ -16,8 +16,10 @@
     slides = $("article"),
     pages = $("#pages"),
     index = 0,
+    isAdmin = false,
     last = slides.length - 1,
-    historyAPISupported = !!("history" in window && history.pushState);
+    historyAPISupported = !!("history" in window && history.pushState),
+    console = window.console || {log: function(){}};
 
     var socket = io.connect();
 
@@ -36,20 +38,20 @@
       }
       pages.html((index+1) + " / " + (last+1));
 
-      if(window.isAdmin) {
+      if(isAdmin) {
         socket.emit("slide", index+1);
       }
     }
 
     var actions = {
       prev: function(){
-        if(window.isAdmin){
+        if(isAdmin){
           $.get("/prev");
         }
         updateSlide(index-1);
       },
       next: function(){
-        if (window.isAdmin){
+        if (isAdmin){
           $.get("/next");
         }
         var li = $(slides[index]).find("li.hidden");
@@ -98,27 +100,23 @@
     $.merge(current.nextAll("article").addClass("next"), current).find("li").addClass("hidden");
     slides.parent().show();
 
-    function enableAdmin(){
-      window.isAdmin = true;
-      window.console.log("You've hit the magic keys, admin now");
-    }
-
     var keys = "38,38,40,40,37,39,37,39,66,65";
     var strokes = [];
-    $(document).bind("keydown", function handleKonami(e){
+    doc.bind("keydown", function handleKonami(e){
       strokes.push(e.keyCode);
       if (strokes.join().indexOf(keys) >= 0){
-        //doc.unbind('keydown', handleKonami);
-        enableAdmin();
+        doc.unbind('keydown', handleKonami);
+        isAdmin = true;
+        console.log("You've hit the magic keys, admin now");
       }
-    }, true);
+    });
 
     socket.on('connect', function() {
       //console.log('Connected');
     });
 
     socket.on("slide", function(number){
-      if(!window.isAdmin){
+      if(!isAdmin){
         $(slides[number]).find("li.hidden").removeClass("hidden");
         updateSlide(number-1, false);
       }
@@ -128,4 +126,3 @@
   $(init);
 
 })(window, document, jQuery, io);
-isAdmin = false;
