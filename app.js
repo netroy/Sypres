@@ -23,6 +23,7 @@ app.get("/[1-9]?([0-9])?/?", function(req, resp){
   });
 });
 
+/*
 app.get("/next", function(req, resp){
   io.sockets.emit("next");
   resp.end();
@@ -32,6 +33,12 @@ app.get("/prev", function(req, resp){
   io.sockets.emit("prev");
   resp.end();
 });
+
+app.get("/slide", function(req, resp){
+  io.sockets.emit("slide", 0);
+  resp.end();
+});
+*/
 
 if (!module.parent) {
   app.listen(process.env.app_port || 10875);
@@ -46,8 +53,8 @@ io.configure(function(){
 });
 
 io.sockets.on('connection', function(client){
-  // do something
-  client.on("disconnect", function(){
-    
-  })
+  client.on("slide", function(index) {
+    console.log(index);
+    client.broadcast.emit("slide", index);
+  });
 });

@@ -1,4 +1,9 @@
-(function(window, document, $){
+(function(window, document, $, io, undefined){
+
+  "use strict";
+
+  var doc = $(document);
+
   function init(){
   
     // handle keys
@@ -7,12 +12,14 @@
       40: "nextSlide",
       37: "prev",
       39: "next"
-    }, 
-    slides = $("article"), 
+    },
+    slides = $("article"),
     pages = $("#pages"),
-    index = 0, 
+    index = 0,
     last = slides.length - 1,
     historyAPISupported = !!("history" in window && history.pushState);
+
+    var socket = io.connect();
 
     function updateSlide(i, skipHistory){
       if(typeof i !== 'number' || i < 0 || i > last){
@@ -28,17 +35,21 @@
         history.pushState(null, null, "/" + (index+1));
       }
       pages.html((index+1) + " / " + (last+1));
+
+      if(window.isAdmin) {
+        socket.emit("slide", index+1);
+      }
     }
 
     var actions = {
       prev: function(){
-        if(isAdmin){
+        if(window.isAdmin){
           $.get("/prev");
         }
         updateSlide(index-1);
       },
       next: function(){
-        if (isAdmin){
+        if (window.isAdmin){
           $.get("/next");
         }
         var li = $(slides[index]).find("li.hidden");
@@ -57,10 +68,11 @@
     };
     
 
-    $(document).bind("keydown", function(e){
+    doc.bind("keydown", function(e){
       var ev = keyEventMap[e.keyCode];
-      if(typeof ev !== "undefined"){
-        $(document).trigger(ev);
+      if(ev !== undefined){
+        doc.trigger(ev);
+        e.preventDefault();
       }
     });
 
@@ -68,7 +80,7 @@
 
     for(var ev in keyEventMap){
       ev = keyEventMap[ev];
-      $(document).bind(ev, actions[ev]);
+      doc.bind(ev, actions[ev]);
     }
     
     if(historyAPISupported){
@@ -83,44 +95,53 @@
     var current = $(slides[parseInt(location.pathname.substr(1) || 1, 10) - 1]);
     current.addClass("selected");
     current.prevAll("article").addClass("prev");
-    jQuery.merge(current.nextAll("article").addClass("next"), current).find("li").addClass("hidden");
+    $.merge(current.nextAll("article").addClass("next"), current).find("li").addClass("hidden");
     slides.parent().show();
 
+    function enableAdmin(){
+      window.isAdmin = true;
+      window.console.log("You've hit the magic keys, admin now");
+    }
 
 /*
-
-    (function(callback) {
-      var keys = "38,38,40,40,37,39,37,39,66,65";
-      var strokes = [];
-      $(document).bind("keypress", function(e){
-        strokes.push(e.keyCode);
-        if (strokes.join().indexOf(keys) >= 0){
-          $(document).unbind('keydown', arguments.callee);
-          callback();
-        }
-      }, true);
-    })(function(){
-      isAdmin = true;
-      if(console.log){
-        console.log("You've hit the magic keys, admin now");
+    var keys = "38,38,40,40,37,39,37,39,66,65";
+    var strokes = [];
+    $("body").bind("keypress", function handleKonami(e){
+      strokes.push(e.keyCode);
+      if (strokes.join().indexOf(keys) >= 0){
+        //doc.unbind('keydown', handleKonami);
+        enableAdmin();
       }
-    });
+    }, true);
 */
-    var socket  = io.connect();
+
     socket.on('connect', function() {
       //console.log('Connected');
     });
+
+/*
     socket.on("next", function(){
-      if(!isAdmin){
-        $(document).trigger("next");
+      if(!window.isAdmin){
+        doc.trigger("next");
       }
     });
+
     socket.on("prev", function(){
-      if(!isAdmin){
-        $(document).trigger("prev");
+      if(!window.isAdmin){
+        doc.trigger("prev");
+      }
+    });
+*/
+
+    socket.on("slide", function(number){
+      if(!window.isAdmin){
+        $(slides[number]).find("li.hidden").removeClass("hidden");
+        updateSlide(number-1, false);
       }
     });
   }
+
   $(init);
-})(window, document, jQuery);
+
+})(window, document, jQuery, io);
 isAdmin = false;
