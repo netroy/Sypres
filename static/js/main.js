@@ -103,35 +103,19 @@
       window.console.log("You've hit the magic keys, admin now");
     }
 
-/*
     var keys = "38,38,40,40,37,39,37,39,66,65";
     var strokes = [];
-    $("body").bind("keypress", function handleKonami(e){
+    $(document).bind("keydown", function handleKonami(e){
       strokes.push(e.keyCode);
       if (strokes.join().indexOf(keys) >= 0){
         //doc.unbind('keydown', handleKonami);
         enableAdmin();
       }
     }, true);
-*/
 
     socket.on('connect', function() {
       //console.log('Connected');
     });
-
-/*
-    socket.on("next", function(){
-      if(!window.isAdmin){
-        doc.trigger("next");
-      }
-    });
-
-    socket.on("prev", function(){
-      if(!window.isAdmin){
-        doc.trigger("prev");
-      }
-    });
-*/
 
     socket.on("slide", function(number){
       if(!window.isAdmin){

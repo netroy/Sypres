@@ -26,6 +26,7 @@ html,body{
   overflow-x: hidden;
   font-family: 'Open Sans Condensed', 'Ubuntu Condensed', Helvetica, sans-serif;
 }
+
 a {
   text-decoration: none;
   font-family: 'Marvel', sans-serif;
@@ -77,22 +78,34 @@ ul{
 li{
   -webkit-transition: opacity 0.2s ease-in;
   -moz-transition: opacity 0.2s ease-in;
+  -ms-transition: opacity 0.2s ease-in;
+  -o-transition: opacity 0.2s ease-in;
 }
 li.hidden {
   opacity: 0;
 }
 
 article.prev {
-  left: -100%;
+  /*left: -100%;*/
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
 }
 
 article.next {
-  left: 100%;
+  /*left: 100%;*/
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
 }
 
 article{
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
 }
 
 code {
@@ -121,6 +134,8 @@ code {
 #intro h4{
   -webkit-transform: rotate(-30deg) translateY(95px);
   -moz-transform: rotate(-30deg) translateY(95px);
+  -ms-transform: rotate(-30deg) translateY(95px);
+  -o-transform: rotate(-30deg) translateY(95px);
   background-color: #f271a7;
   padding-left: 30px;
   font-size: 80px;
@@ -130,6 +145,8 @@ code {
 #intro h5{
   -webkit-transform: rotate(-30deg) translateY(110px) translateX(-140px);
   -moz-transform: rotate(-30deg) translateY(110px) translateX(-140px);
+  -ms-transform: rotate(-30deg) translateY(110px) translateX(-140px);
+  -o-transform: rotate(-30deg) translateY(110px) translateX(-140px);
   background-color: #6db2dc;
   padding-right: 30px;
   font-size: 40px;
@@ -143,6 +160,8 @@ code {
 #intro h6 {
   -webkit-transform: rotate(-30deg) translateY(50px) translateX(380px);
   -moz-transform: rotate(-30deg) translateY(50px) translateX(380px);
+  -ms-transform: rotate(-30deg) translateY(50px) translateX(380px);
+  -o-transform: rotate(-30deg) translateY(50px) translateX(380px);
   font-size: 50px;
   color: #000;
   text-shadow: 0 0 2px rgba(160,160,100,0.7);
@@ -338,6 +357,9 @@ footer{
   opacity: 0.4;
   text-shadow: 0 0 4px #000;
   -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
 }
 #jsfoo a{
   opacity: 0.8;
