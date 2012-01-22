@@ -25,6 +25,7 @@ html,body{
   overflow-y: auto;
   overflow-x: hidden;
   font-family: 'Open Sans Condensed', 'Ubuntu Condensed', Helvetica, sans-serif;
+  -webkit-transform: translate3d(0,0,0);
 }
 
 a {
